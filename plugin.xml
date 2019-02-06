@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="service_manager.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="service_manager.Perspective"
+            id="Service_Manager.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="service_manager.views.ServiceBusView"
+            id="Service_Manager.views.serviceBusView"
+            name="Service Bus">
+      </view>
+      <view
+            name="Servicios Proxy"
+            class="service_manager.views.ProxyView"
+            icon="icons/icon_proxy_service.gif"
+            id="Service_Manager.views.proxyView">
+      </view>
+      <view
+            class="service_manager.views.BusinessView"
+            id="Service_Manager.views.businessView"
+            icon="icons/icon_external_service.gif"
+            name="Servicios Business">
+      </view>
+      <category
+            id="Service_Manager"
+            name="Sample Category">
+      </category>
+   </extension>
+   <!--<extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               closeable="true"
+               id="service_manager.viewsView"
+               moveable="true"
+               ratio="0.15"
+               relationship="right"
+               relative="org.eclipse.ui.editors"
+               standalone="false"
+			   visible="true">
+         </view>
+         <view
+               closeable="true"
+               id="service_manager.views.BusinessView"
+               moveable="true"
+               ratio="0.15"
+               relationship="left"
+               relative="service_manager.viewsView"
+               standalone="false"
+			   visible="true">
+         </view>
+         
+      </perspectiveExtension>
+   </extension>-->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="Archivo">
+            <command
+                  commandId="Service_Manager.commands.createServiceBus"
+                  id="Service_Manager.menus.createServiceBus"
+                  label="Nuevo Servicio ServiceBus"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="Service_Manager.commands.createProxy"
+                  id="Service_Manager.menus.createProxy"
+                  label="Nuevo Servicio Proxy"
+                  mnemonic="O">
+            </command>
+            <command
+                  commandId="Service_Manager.commands.createBusiness"
+                  id="Service_Manager.menus.createBusiness"
+                  label="Nuevo Servicio Business"
+                  mnemonic="B">
+            </command>
+            <command
+                  commandId="Service_Manager.commands.excelExport"
+                  id="Service_Manager.menus.excelExport"
+                  label="Exportar a Excel"
+                  mnemonic="E">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Salir">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="Service_Manager.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.excelExport"
+            name="Exportar a Excel">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.createBusiness"
+            name="Crear Business">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.createServiceBus"
+            name="Crear ServiceBus">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.createProxy"
+            name="Crear Proxy">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.openProxy"
+            name="Abrir Proxy">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.deleteBusiness"
+            name="Eliminar Business">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.deleteServiceBus"
+            name="Eliminar ServiceBus">
+      </command>
+      <command
+            categoryId="Service_Manager.commands.category"
+            id="Service_Manager.commands.deleteProxy"
+            name="Eliminar Proxy">
+      </command>
+   </extension>
+   <extension 
+      point="org.eclipse.ui.commandImages"> 
+	   <image 
+	         commandId="Service_Manager.commands.deleteProxy" 
+	         icon="icons/sample.gif"> 
+	   </image> 
+	</extension> 
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="service_manager.handlers.ExcelExport"
+            commandId="Service_Manager.commands.excelExport">
+      </handler>
+      <handler
+            class="service_manager.handlers.CreateBusiness"
+            commandId="Service_Manager.commands.createBusiness">
+      </handler>
+      <handler
+            class="service_manager.handlers.CreateServiceBus"
+            commandId="Service_Manager.commands.createServiceBus">
+      </handler>
+      <handler
+            class="service_manager.handlers.CreateProxy"
+            commandId="Service_Manager.commands.createProxy">
+      </handler>
+      <handler
+            class="service_manager.handlers.OpenServiceBus"
+            commandId="Service_Manager.commands.openServiceBus">
+      </handler>
+      <handler
+            class="service_manager.handlers.OpenBusiness"
+            commandId="Service_Manager.commands.openBusiness">
+      </handler>
+      <handler
+            class="service_manager.handlers.OpenProxy"
+            commandId="Service_Manager.commands.openProxy">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="Service_Manager.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="service_manager.editors.ProxyEditor"
+            extensions="prx"
+            id="service_manager.editors.ProxyEditor"
+            name="Proxy Editor">
+      </editor>
+      <editor
+            class="service_manager.editors.ServiceBusEditor"
+            extensions="svb"
+            id="service_manager.editors.ServiceBusEditor"
+            name="ServiceBus Editor">
+      </editor>
+      <editor
+            class="service_manager.editors.BusinessEditor"
+            extensions="bsn"
+            id="service_manager.editors.BusinessEditor"
+            name="Business Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="Service_Manager.application"
+            name="Service Manager">
+         <property
+               name="appName"
+               value="Service Manager">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

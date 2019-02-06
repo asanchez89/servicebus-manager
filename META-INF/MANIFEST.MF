@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Service_Manager
+Bundle-SymbolicName: Service_Manager; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: service_manager.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.apache.poi
+Bundle-ClassPath: poi-3.9-20121203.jar,
+ poi-examples-3.9-20121203.jar,
+ poi-excelant-3.9-20121203.jar,
+ poi-ooxml-3.9-20121203.jar,
+ poi-ooxml-schemas-3.9-20121203.jar,
+ poi-scratchpad-3.9-20121203.jar,
+ .
